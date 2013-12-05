@@ -1,0 +1,46 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>CSS格式化工具</title>
+<!--
+版本编号：130703
+作   者：chenhao
+-->
+<style>
+*{margin:0;padding:0}
+h1{margin:10px 0}
+textarea{width:550px;height:250px;margin-bottom:10px;display:block}
+input{width:50px;height:25px}
+</style>
+</head>
+<body>
+    <h1>CSS格式化工具</h1>
+    <textarea name="" cols="" rows="" placeholder="这里输入需要格式化的CSS"></textarea>
+    <input type="button" value="单行">
+    <input type="button" value="分段">
+</body>
+<script type="text/javascript">
+var text=document.getElementsByTagName("textarea")[0];
+var input1=document.getElementsByTagName("input")[0];
+var input2=document.getElementsByTagName("input")[1];
+input2.onclick=function(){
+		var str=text.value;
+		str=str.replace(/\s*[{]\s*/g,"{\n\t")
+			.replace(/\s*[;]\s*[}]\s*/g,"}")
+			.replace(/\s*[:]\s*/g,":")
+			.replace(/[;]\s*/g,";\n\t")
+			.replace(/[}]\s*/g,";\n}\n");
+		text.value=str;
+}
+input1.onclick=function(){
+		var str=text.value;
+		str=str.replace(/\s*[{]\s*/g,"{")
+			.replace(/\s*[:]\s*/g,":")
+			.replace(/\s*[;]\s*/g,";")
+			.replace(/\s*[;]\s*[}]\s*/g,"}\n")
+			.replace(/\s*[}]\s*/g,"}\n");
+		text.value=str;
+}
+</script>
+</html>
